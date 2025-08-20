@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build and push Docker image
-        uses: TBXark/docker-action@master
+        uses: leonardocaliza/docker-action@master
         with:
           version: ${{ github.event.inputs.version || 'latest' }}
           docker_registry: ghcr.io
