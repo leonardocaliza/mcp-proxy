@@ -7,10 +7,10 @@ COPY . .
 RUN make build
 
 # Node (we just copy the binaries later)
-FROM node:lts-bookworm-slim AS node
+FROM node:22-trixie-slim AS node
 
 # Runtime: switch to Debian 13 (trixie)
-FROM ghcr.io/astral-sh/uv:python3.13-trixie-slim
+FROM ghcr.io/astral-sh/uv:python3.14-trixie-slim
 
 # Pull in latest security patches in the base
 RUN apt-get update && apt-get -y dist-upgrade --no-install-recommends \
