@@ -16,6 +16,10 @@ FROM ghcr.io/astral-sh/uv:python3.14-trixie-slim
 RUN apt-get update && apt-get -y dist-upgrade --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
+# upgrade PIP to fix CVE-2025-8869
+RUN python3 -m pip install --no-cache-dir --upgrade "pip>=25.3"
+
+
 # Add Node/npm
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
